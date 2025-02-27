@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <time.h>
+#include <fstream>
 
 using namespace std;
 
@@ -9,9 +11,9 @@ int main(){
     int a, random, choice ;
     string haslo;
     string haslotemp;
-   cout << "Podaj długość hasła: ";
+   cout << "Podaj dlugosc hasla: ";
    cin >> a;
-   cout << " 1 - małe litery \n 2 - małe i duże litery \n 3 - małe i duże litery z cyframi \n wybierz zabepieczenia:";
+   cout << " 1 - male litery \n 2 - male i duze litery \n 3 - male i duze litery z cyframi \n wybierz zabepieczenia: ";
    cin >> choice;
 
   switch(choice){
@@ -53,7 +55,12 @@ int main(){
         }
         break;
   }
-   cout << "\ntwoje hasło to: " << haslo;
- 
+  ofstream File("hasla.txt");
+  File << haslo << endl;
+  File.close();
+   cout << "\n twoje haslo to: " << haslo << endl << "Haslo zostalo rowniez zapisane do pliku tekstowego" ;
+
+    getchar();
+
     return 0;
 }
